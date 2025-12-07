@@ -1,0 +1,141 @@
+/* ===== Gruvbox Dark palette (reference)
+bg_hard:   #1d2021
+bg:        #282828
+bg_soft:   #32302f
+fg:        #ebdbb2
+fg_dim:    #a89984
+gray:      #928374
+
+red:       #cc241d
+red_light: #fb4934
+green:     #98971a
+green_lt:  #b8bb26
+yellow:    #d79921
+yellow_lt: #fabd2f
+blue:      #458588
+purple:    #b16286
+purple_lt: #d3869b
+aqua:      #689d6a
+aqua_lt:   #8ec07c
+orange:    #d65d0e
+orange_lt: #fe8019
+*/
+
+/* Fonts */
+* {
+  font-family: "CaskaydiaMono Nerd Font", "Symbols Nerd Font Mono", "Font Awesome 6 Free", "Material Icons", monospace;
+}
+
+/* Bar */
+#waybar {
+  background: #1d2021;     /* bg_hard */
+  color: #ebdbb2;          /* fg */
+}
+
+/* Common module spacing */
+#tray,
+#network,
+#pulseaudio,
+#cpu,
+#temperature,
+#memory,
+#custom-media,
+#custom-pomodoro,
+#custom-powermenu,
+#custom-mic,
+#custom-gpu,
+#window,
+#clock,
+#hyprland-language,
+#sway-language,
+#custom-language {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+/* Clock & Window */
+#clock,
+#window {
+  color: #ebdbb2;          /* fg */
+}
+
+/* Tray */
+#tray { padding-left: 4px; }
+
+/* Workspaces */
+#workspaces button {
+  color: #928374;          /* gray (inactive) */
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: inset 0 -2px transparent;
+}
+
+#workspaces button:hover {
+  background-color: #3c3836;  /* bg hover */
+  color: #ebdbb2;             /* fg */
+}
+
+#workspaces button.active {
+  color: #ebdbb2;             /* purple_lt */
+  box-shadow: inset 0 -2px #ebdbb2;
+}
+
+#workspaces button.urgent {
+  color: #fb4934;             /* red_light */
+  box-shadow: inset 0 -2px #fb4934;
+}
+
+/* Network / Audio / CPU / Temp / Memory */
+#network      { color: #458588; }  /* blue */
+#pulseaudio   { color: #b8bb26; }  /* aqua_light-ish */
+#cpu          { color: #fabd2f; }  /* green_lt */
+#temperature  { color: #fabd2f; }  /* yellow */
+#memory       { color: #fabd2f; }  /* yellow_lt */
+
+/* Custom modules */
+#custom-powermenu { color: #cc241d; }   /* red */
+#custom-mic       { color: #b8bb26; }   /* green_lt */
+#custom-gpu       { color: #fe8019; }   /* orange_lt */
+
+#custom-media {
+  color: #ebdbb2;      /* fg */
+  font-weight: bold;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+/* Language module (Hyprland/Sway/custom) */
+#hyprland-language,
+#sway-language,
+#custom-language {
+  color: #fabd2f;                 /* yellow_lt */
+  font-weight: 700;
+}
+#hyprland-language .active,
+#sway-language .active,
+#custom-language .active {
+  color: #fe8019;                 /* orange_lt highlight for current layout */
+}
+
+/* Pomodoro */
+#custom-pomodoro { padding: 0 8px; }
+
+#custom-pomodoro.work {
+  color: #fe8019;   /* orange_lt (warm work) */
+}
+
+#custom-pomodoro.chill {
+  color: #83a598;   /* aqua_light (calm chill) */
+}
+
+#custom-pomodoro.paused {
+  opacity: 0.75;
+}
+
+/* Optional separators (subtle) */
+#waybar > *:not(:first-child) {
+  border-left: 1px solid rgba(235, 219, 178, 0.06); /* faint fg line */
+  margin-left: 2px;
+}

@@ -1,0 +1,200 @@
+{
+  "layer": "top",
+  "position": "top",
+  "margin-bottom": 0,
+  "modules-left": [
+    "clock",
+    "custom/separator",
+    "hyprland/workspaces",
+    "custom/separator",
+    "tray"
+  ],
+  "modules-center": ["custom/media"],
+  "modules-right": [
+    "custom/pomodoro",
+    "custom/separator",
+    "custom/gpu",
+    "custom/separator",
+    "cpu",
+    "temperature",
+    "memory",
+    "custom/separator",
+    "pulseaudio",
+    "custom/mic",
+    "custom/separator",
+    "hyprland/language",
+    "custom/separator",
+    "custom/powermenu",
+    "custom/separator"
+  ],
+  "hyprland/language": {
+    "format": "{shortDescription}",
+    "min-length": 2,
+    "tooltip": false
+    },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+  "clock": {
+    "format": " {:%R, %d/%m/%Y }",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode"          : "year",
+      "mode-mon-col"  : 3,
+      "weeks-pos"     : "right",
+      "on-scroll"     : 1,
+      "on-click-right": "mode",
+      "format": {
+        "months":     "<span color='#a6e3a1'><b>{}</b></span>",
+        "days":       "<span color='#a6adc8'><b>{}</b></span>",
+        "weeks":      "<span color='#6c7086'><b>W{}</b></span>",
+        "weekdays":   "<span color='#b4befe'><b>{}</b></span>",
+        "today":      "<span color='#f5e0dc'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "separate-outputs": false,
+    "active-only": false,
+    // turn on true to show same all workspaces on each monitor
+    "all-outputs": false,
+    "format-icons": {
+      // 1-10
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10":"10",
+      // 11-10
+      "11": "1",
+      "12": "2",
+      "13": "3",
+      "14": "4",
+      "15": "5",
+      "16": "6",
+      "17": "7",
+      "18": "8",
+      "19": "9",
+      "110":"10"
+
+      // // 1-10
+      // "1": "一",
+      // "2": "二",
+      // "3": "三",
+      // "4": "四",
+      // "5": "五",
+      // "6": "六",
+      // "7": "七",
+      // "8": "八",
+      // "9": "九",
+      // "10": "十",
+      // // 11-10
+      // "11": "一",
+      // "12": "二",
+      // "13": "三",
+      // "14": "四",
+      // "15": "五",
+      // "16": "六",
+      // "17": "七",
+      // "18": "八",
+      // "19": "九",
+      // "110": "十"
+    }
+  },
+  "hyprland/window": {
+    "format": "{}"
+  },
+
+  "temperature": {
+    "format": "{icon}{temperatureC}°C",
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    "on-click": "kitty btop",
+    "format-icons": ["", "", ""]
+  },
+  "memory": {
+    "format": "󰫗 {}%",
+    "tooltip": "false",
+    "on-click": "kitty btop"
+  },
+  "cpu": {
+    "format": " {usage}%",
+    "tooltip": "false",
+    "on-click": "kitty btop"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-muted": "󰖁 {volume}%",
+    "format-icons": {
+      "alsa_output.pci-0000_00_1f.3.analog-stereo": " ",
+      "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "  ",
+      "headphones": "󰋋",
+      "handsfree": "",
+      "headset": "",
+      "phone": "",
+      "phone-muted": "",
+      "portable": "",
+      "car": "",
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "scroll-step": 10,
+    "on-click": "pavucontrol"
+  },
+  "custom/mic": {
+    "exec": "~/.config/waybar/modules/mic_status.rb",
+    "interval": 0,
+    "format": "{text}",
+    "tooltip": false
+  },
+  "custom/gpu": {
+    "exec": "~/.config/waybar/modules/gpu_status.sh",
+    "interval": 0,
+    "format": "{text}",
+    "on-click": "kitty btop",
+    "tooltip": false
+  },
+  "custom/powermenu": {
+    "format": "󰐥",
+    "tooltip": false,
+    "on-click": "exec wlogout -p layer-shell"
+  },
+  "custom/separator": {
+    "format": " ",
+    "tooltip": false
+  },
+   "custom/media": {
+      "exec": "~/.config/waybar/modules/media_control.sh",
+      "interval": 1,
+      "return-type": "json",
+      "format": "{}",
+      "tooltip": false,
+      "on-click": "~/.config/waybar/modules/media_control.sh toggle",
+      "on-click-right": "~/.config/waybar/modules/media_control.sh next",
+      "on-click-middle": "~/.config/waybar/modules/media_control.sh prev"
+  },
+  "custom/pomodoro": {
+    "exec": "python ~/.config/waybar/modules/pomodoro.py",
+    "return-type": "json",
+    "interval": 1,
+    "exec-on-event": true,
+
+    "on-click": "python ~/.config/waybar/modules/pomodoro.py --toggle",
+    "on-click-middle": "python ~/.config/waybar/modules/pomodoro.py --reset",
+    "on-click-right": "python ~/.config/waybar/modules/pomodoro.py --switch-mode"
+  }
+}

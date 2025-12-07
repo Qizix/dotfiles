@@ -1,0 +1,118 @@
+/* ===== Gruvbox test version (all white icons) ===== */
+
+* {
+  font-family: "CaskaydiaMono Nerd Font", "Symbols Nerd Font Mono",
+    "Font Awesome 6 Free", "Material Icons", monospace;
+}
+
+/* Bar background and global text */
+#waybar {
+  background: #1d2021; /* Gruvbox dark hard */
+  color: #ebdbb2;      /* soft white (same as clock) */
+}
+
+/* General padding for all modules */
+#tray,
+#network,
+#pulseaudio,
+#cpu,
+#temperature,
+#memory,
+#custom-media,
+#custom-pomodoro,
+#custom-powermenu,
+#custom-mic,
+#custom-gpu,
+#window,
+#clock,
+#hyprland-language,
+#sway-language,
+#custom-language {
+  padding-left: 6px;
+  padding-right: 6px;
+  color: #ebdbb2;      /* everything white */
+}
+
+/* Clock & window text */
+#clock,
+#window {
+  color: #ebdbb2;
+}
+
+/* Workspaces */
+#workspaces button {
+  color: #a89984; /* dim white/gray for inactive */
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: inset 0 -2px transparent;
+}
+
+#workspaces button:hover {
+  background-color: #3c3836;
+  color: #ebdbb2;
+}
+
+#workspaces button.active {
+  color: #ebdbb2;
+  box-shadow: inset 0 -2px #ebdbb2;
+}
+
+#workspaces button.urgent {
+  color: #fb4934;
+  box-shadow: inset 0 -2px #fb4934;
+}
+
+/* Media module */
+#custom-media {
+  font-weight: bold;
+  font-size: 13px;
+  padding: 0 10px;
+  color: #ebdbb2;
+}
+
+/* Language indicator */
+#hyprland-language,
+#sway-language,
+#custom-language {
+  color: #ebdbb2;
+  font-weight: 700;
+}
+#hyprland-language .active,
+#sway-language .active,
+#custom-language .active {
+  color: #ebdbb2;
+}
+
+/* Pomodoro — also white for now */
+#custom-pomodoro {
+  padding: 0 8px;
+  color: #ebdbb2;
+}
+
+#custom-pomodoro.work,
+#custom-pomodoro.chill,
+#custom-pomodoro.paused {
+  color: #ebdbb2;
+  opacity: 1;
+}
+
+/* All other modules (icons/text unified) */
+#network,
+#pulseaudio,
+#cpu,
+#temperature,
+#memory,
+#custom-powermenu,
+#custom-mic,
+#custom-gpu {
+  color: #ebdbb2;
+}
+
+/* Separators — faint for spacing */
+#waybar > *:not(:first-child) {
+  border-left: 1px solid rgba(235, 219, 178, 0.08);
+  margin-left: 2px;
+  padding-left: 8px;
+}

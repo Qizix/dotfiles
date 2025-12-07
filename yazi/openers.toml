@@ -1,0 +1,38 @@
+[opener]
+# Define named openers
+open = [
+  { run = 'swayimg "$@"', desc = "Swayimg", orphan = true, for = "unix" },
+  { run = 'imv "$@"', desc = "IMV", orphan = true, for = "unix" },
+  { run = 'feh "$@"', desc = "Feh", orphan = true, for = "unix" },
+  { run = 'gimp "$@"', desc = "GIMP", for = "unix" },
+  { run = 'xdg-open "$@"', desc = "System Default", for = "unix" }
+]
+
+# You can also define other categories if you want (e.g. edit, play)
+# edit = [
+#   { run = 'gimp "$@"', desc = "GIMP" },
+#   { run = 'krita "$@"', desc = "Krita" }
+# ]
+
+[open]
+# Use prepend_rules or rules depending on whether you want to keep default rules
+prepend_rules = [
+  # For image file types (*.png, *.jpg, *.jpeg, *.gif, etc.), allow multiple openers
+  { name = "*.png", use = ["open"] },
+  { name = "*.jpg", use = ["open"] },
+  { name = "*.jpeg", use = ["open"] },
+  { name = "*.gif", use = ["open"] },
+  { name = "*.bmp", use = ["open"] },
+  { name = "*.webp", use = ["open"] }
+]
+
+# (Optional) You can also append a rule to all files to have a fallback
+append_rules = [
+  { name = "*", use = "open" }
+]
+
+# Optionally, you could override the entire set:
+# rules = [
+#   { mime = "image/*", use = ["open"] },
+#   { name = "*.txt", use = ["open"] }
+# ]

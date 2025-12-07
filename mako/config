@@ -1,0 +1,22 @@
+max-visible=10
+layer=top
+
+
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#b4befe
+progress-color=over #313244
+
+[urgency=high]
+border-color=#fab387
+
+[category=translation]
+font=monospace 15
+height=2000
+width=500
+on-notify=none
+border-color=#b4befe
+history=0
+#default-timeout=0
+#max-visible=1
+layer=overlay

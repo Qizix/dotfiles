@@ -1,0 +1,86 @@
+[[mgr.prepend_keymap]]
+on   = [ "c", "a", "a" ]
+run  = "plugin compress"
+desc = "Archive selected files"
+
+[[mgr.prepend_keymap]]
+on   = [ "c", "a", "p" ]
+run  = "plugin compress -p"
+desc = "Archive selected files (password)"
+
+[[mgr.prepend_keymap]]
+on   = [ "c", "a", "h" ]
+run  = "plugin compress -ph"
+desc = "Archive selected files (password+header)"
+
+[[mgr.prepend_keymap]]
+on   = [ "c", "a", "l" ]
+run  = "plugin compress -l"
+desc = "Archive selected files (compression level)"
+
+[[mgr.prepend_keymap]]
+on   = [ "c", "a", "u" ]
+run  = "plugin compress -phl"
+desc = "Archive selected files (password+header+level)"
+
+[[manager.prepend_keymap]]
+on = [ "n", "t" ]
+run = ["plugin telegram-send"]
+desc = "Send with Telegram"
+
+[[mgr.prepend_keymap]]
+on   = "!"
+for  = "unix"
+run  = 'shell "$SHELL" --block'
+desc = "Open $SHELL here"
+
+[[input.prepend_keymap]]
+on   = "<Esc>"
+run  = "exit"
+desc = "Cancel input"
+
+[[mgr.prepend_keymap]]
+on   = "Y"
+run  = [
+  'shell -- printf "file://%s\n" "$@" | wl-copy --type text/uri-list',
+  "yank"
+]
+desc = "Yank files and copy their URIs to the system clipboard (Wayland)"
+
+[[mgr.prepend_keymap]]
+on   = "<C-p>"
+run  = '''
+  shell --detach -- "
+    dir=$(yazi --print-cwd)
+    mime=$(wl-paste --list-types | head -n1)
+
+    if echo \"$mime\" | grep -qE 'x-special/gnome-copied-files|text/uri-list|application/vnd.portal.filetransfer|application/vnd.portal.files'; then
+      # Clipboard has files
+      wl-paste --type text/uri-list | while read -r uri; do
+        file=$(echo \"$uri\" | sed 's|^file://||')
+        cp -r \"$file\" \"$dir/\"
+      done
+      notify-send '📂 Pasted file(s) into' \"$dir\"
+
+    elif echo \"$mime\" | grep -q 'image/'; then
+      # Clipboard has image
+      ext=${mime#image/}
+      fname=\"clipboard-$(date +%s).$ext\"
+      wl-paste --type \"$mime\" --no-newline > \"$dir/$fname\"
+      notify-send '📸 Pasted image as' \"$fname\"
+
+    else
+      notify-send '❌ Clipboard does not contain files or images'
+    fi
+  "
+'''
+desc = "Paste file(s) or image from clipboard into current directory"
+
+[[mgr.prepend_keymap]]
+on  = "<C-n>"
+run = 'shell -- dragon -x -i -T "$1"'
+
+[[mgr.prepend_keymap]]
+on   = "T"
+run  = "plugin toggle-pane max-preview"
+desc = "Maximize or restore the preview pane"
