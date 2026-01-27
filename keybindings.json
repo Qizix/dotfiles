@@ -231,5 +231,15 @@
         "key": "cmd+k e",
         "command": "-workbench.files.action.focusOpenEditorsView",
         "when": "workbench.explorer.openEditorsView.active"
+    },
+    {
+        "key": "shift+j",
+        "command": "list.expandSelectionDown",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "shift+k",
+        "command": "list.expandSelectionUp",
+        "when": "listFocus && !inputFocus"
     }
 ]
